@@ -14,7 +14,7 @@ export const getPosts = async(req , res) =>{
 
 // get user
 export const getPost = async(req , res) =>{
-    const id = req.params;
+    const id = req.params.id;
     try{
         const post = await prisma.post.findUnique({
             where : {id}
@@ -77,7 +77,7 @@ export const deletePost = async(req , res) =>{
         await prisma.post.delete({
             where : {id}
         })
-        res.status(200).json({"Post deleted"}); 
+        res.status(200).json({message:"Post deleted"}); 
 
 
     }catch(err){
